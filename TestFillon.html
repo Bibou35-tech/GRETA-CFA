@@ -12,7 +12,10 @@
             padding: 20px;
         }
         .question {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .option {
+            margin-bottom: 25px;
         }
         button {
             background-color: #67D185;
@@ -24,282 +27,251 @@
             width: 100px;
         }
         button:hover {
-            background-color: #67D185;
+            background-color: #5bbd7a;
         }
         #results {
             margin-top: 20px;
             display: none;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #67D185;
+            color: white;
+        }
+        .percentage-cell {
+            position: relative;
+            background-color: #f2f2f2;
+        }
+        .percentage-bar {
+            position: absolute;
+            height: 100%;
+            background-color: #67D185;
+            top: 0;
+            left: 0;
+        }
+        .percentage-text {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
-
-<h1>Test : Quel est votre profil d'entrepreneur ?</h1>
-
-<div id="questionnaire">
-    <div class="question" id="q1">
-        <p>1. Quand vous avez une idée de projet, vous préférez :</p>
-        <input type="radio" id="q1a" name="q1" value="a">
-        <label for="q1a">Commencer immédiatement à travailler sur le projet.</label><br>
-        <input type="radio" id="q1b" name="q1" value="b">
-        <label for="q1b">Explorer plusieurs idées en même temps.</label><br>
-        <input type="radio" id="q1c" name="q1" value="c">
-        <label for="q1c">Évaluer comment ce projet s'intègre dans votre style de vie.</label><br>
-        <input type="radio" id="q1d" name="q1" value="d">
-        <label for="q1d">Expérimenter différentes approches avant de vous engager.</label><br>
-        <input type="radio" id="q1e" name="q1" value="e">
-        <label for="q1e">Vous plonger complètement dans cette idée.</label><br>
-        <input type="radio" id="q1f" name="q1" value="f">
-        <label for="q1f">Considérer l'impact social ou communautaire du projet.</label><br>
+    <h1>Test : Quel est votre type d'entrepreneur ?</h1>
+    <div id="questionnaire">
+        <div class="question" id="q1">
+            <p><strong>1. Quand vous avez une idée de projet, vous préférez :</strong></p>
+            <div class="option"><input type="radio" id="q1a" name="q1" value="a"> <label for="q1a">Commencer immédiatement à travailler sur le projet.</label></div>
+            <div class="option"><input type="radio" id="q1b" name="q1" value="b"> <label for="q1b">Explorer plusieurs idées en même temps.</label></div>
+            <div class="option"><input type="radio" id="q1c" name="q1" value="c"> <label for="q1c">Évaluer comment ce projet s'intègre dans votre style de vie.</label></div>
+            <div class="option"><input type="radio" id="q1d" name="q1" value="d"> <label for="q1d">Expérimenter différentes approches avant de vous engager.</label></div>
+            <div class="option"><input type="radio" id="q1e" name="q1" value="e"> <label for="q1e">Vous plonger complètement dans cette idée.</label></div>
+            <div class="option"><input type="radio" id="q1f" name="q1" value="f"> <label for="q1f">Considérer l'impact social ou communautaire du projet.</label></div>
+        </div>
+        <div class="question" id="q2" style="display: none;">
+            <p><strong>2. Votre approche du travail est plutôt :</strong></p>
+            <div class="option"><input type="radio" id="q2a" name="q2" value="a"> <label for="q2a">Très organisée et axée sur les résultats.</label></div>
+            <div class="option"><input type="radio" id="q2b" name="q2" value="b"> <label for="q2b">Dynamique et variée, avec plusieurs projets en cours.</label></div>
+            <div class="option"><input type="radio" id="q2c" name="q2" value="c"> <label for="q2c">Équilibrée, en laissant du temps pour les loisirs.</label></div>
+            <div class="option"><input type="radio" id="q2d" name="q2" value="d"> <label for="q2d">Adaptable, en fonction des besoins du moment.</label></div>
+            <div class="option"><input type="radio" id="q2e" name="q2" value="e"> <label for="q2e">Intensément concentrée sur un seul projet à la fois.</label></div>
+            <div class="option"><input type="radio" id="q2f" name="q2" value="f"> <label for="q2f">Orientée vers une vision à long terme.</label></div>
+        </div>
+        <div class="question" id="q3" style="display: none;">
+            <p><strong>3. En situation de stress, vous avez tendance à :</strong></p>
+            <div class="option"><input type="radio" id="q3a" name="q3" value="a"> <label for="q3a">Travailler encore plus dur.</label></div>
+            <div class="option"><input type="radio" id="q3b" name="q3" value="b"> <label for="q3b">Chercher de nouvelles opportunités ou projets.</label></div>
+            <div class="option"><input type="radio" id="q3c" name="q3" value="c"> <label for="q3c">Prendre du recul pour évaluer la situation.</label></div>
+            <div class="option"><input type="radio" id="q3d" name="q3" value="d"> <label for="q3d">Trouver des solutions créatives et polyvalentes.</label></div>
+            <div class="option"><input type="radio" id="q3e" name="q3" value="e"> <label for="q3e">Vous engager encore plus dans votre travail.</label></div>
+            <div class="option"><input type="radio" id="q3f" name="q3" value="f"> <label for="q3f">Réévaluer votre vision et vos objectifs.</label></div>
+        </div>
+        <div class="question" id="q4" style="display: none;">
+            <p><strong>4. Votre attitude envers la prise de décision est :</strong></p>
+            <div class="option"><input type="radio" id="q4a" name="q4" value="a"> <label for="q4a">Rapide et basée sur l'efficacité.</label></div>
+            <div class="option"><input type="radio" id="q4b" name="q4" value="b"> <label for="q4b">Flexible et ouverte aux changements.</label></div>
+            <div class="option"><input type="radio" id="q4c" name="q4" value="c"> <label for="q4c">Équilibrée, en tenant compte de votre bien-être.</label></div>
+            <div class="option"><input type="radio" id="q4d" name="q4" value="d"> <label for="q4d">Expérimentale, en essayant différentes options.</label></div>
+            <div class="option"><input type="radio" id="q4e" name="q4" value="e"> <label for="q4e">Passionnée, en suivant votre intuition.</label></div>
+            <div class="option"><input type="radio" id="q4f" name="q4" value="f"> <label for="q4f">Réfléchie, en considérant l'impact à long terme.</label></div>
+        </div>
+        <div class="question" id="q5" style="display: none;">
+            <p><strong>5. Dans votre entreprise, vous accordez le plus d'importance à :</strong></p>
+            <div class="option"><input type="radio" id="q5a" name="q5" value="a"> <label for="q5a">La productivité et l'organisation.</label></div>
+            <div class="option"><input type="radio" id="q5b" name="q5" value="b"> <label for="q5b">L'innovation et la créativité.</label></div>
+            <div class="option"><input type="radio" id="q5c" name="q5" value="c"> <label for="q5c">L'équilibre entre vie professionnelle et personnelle.</label></div>
+            <div class="option"><input type="radio" id="q5d" name="q5" value="d"> <label for="q5d">La polyvalence et l'adaptabilité.</label></div>
+            <div class="option"><input type="radio" id="q5e" name="q5" value="e"> <label for="q5e">La passion et l'engagement.</label></div>
+            <div class="option"><input type="radio" id="q5f" name="q5" value="f"> <label for="q5f">La vision et l'impact social.</label></div>
+        </div>
+        <div class="question" id="q6" style="display: none;">
+            <p><strong>6. Votre plus grande force en tant qu'entrepreneur est :</strong></p>
+            <div class="option"><input type="radio" id="q6a" name="q6" value="a"> <label for="q6a">Votre capacité à organiser et à exécuter.</label></div>
+            <div class="option"><input type="radio" id="q6b" name="q6" value="b"> <label for="q6b">Votre capacité à innover et à prendre des risques.</label></div>
+            <div class="option"><input type="radio" id="q6c" name="q6" value="c"> <label for="q6c">Votre capacité à maintenir un équilibre sain.</label></div>
+            <div class="option"><input type="radio" id="q6d" name="q6" value="d"> <label for="q6d">Votre capacité à vous adapter et à être polyvalent.</label></div>
+            <div class="option"><input type="radio" id="q6e" name="q6" value="e"> <label for="q6e">Votre passion et votre engagement.</label></div>
+            <div class="option"><input type="radio" id="q6f" name="q6" value="f"> <label for="q6f">Votre vision et votre leadership.</label></div>
+        </div>
+        <div class="question" id="q7" style="display: none;">
+            <p><strong>7. Quand il s'agit de déléguer des tâches, vous :</strong></p>
+            <div class="option"><input type="radio" id="q7a" name="q7" value="a"> <label for="q7a">Préférez tout faire vous-même pour assurer l'efficacité.</label></div>
+            <div class="option"><input type="radio" id="q7b" name="q7" value="b"> <label for="q7b">Déléguez facilement pour vous concentrer sur de nouvelles idées.</label></div>
+            <div class="option"><input type="radio" id="q7c" name="q7" value="c"> <label for="q7c">Déléguez pour maintenir un bon équilibre de vie.</label></div>
+            <div class="option"><input type="radio" id="q7d" name="q7" value="d"> <label for="q7d">Déléguez certaines tâches mais aimez rester impliqué.</label></div>
+            <div class="option"><input type="radio" id="q7e" name="q7" value="e"> <label for="q7e">Avez du mal à déléguer car vous êtes très engagé.</label></div>
+            <div class="option"><input type="radio" id="q7f" name="q7" value="f"> <label for="q7f">Déléguez en fonction de la vision et des objectifs à long terme.</label></div>
+        </div>
+        <div class="question" id="q8" style="display: none;">
+            <p><strong>8. Votre approche de la planification stratégique est :</strong></p>
+            <div class="option"><input type="radio" id="q8a" name="q8" value="a"> <label for="q8a">Axée sur des objectifs à court terme et des résultats concrets.</label></div>
+            <div class="option"><input type="radio" id="q8b" name="q8" value="b"> <label for="q8b">Flexible et adaptable aux changements du marché.</label></div>
+            <div class="option"><input type="radio" id="q8c" name="q8" value="c"> <label for="q8c">Équilibrée, en tenant compte de vos besoins personnels.</label></div>
+            <div class="option"><input type="radio" id="q8d" name="q8" value="d"> <label for="q8d">Expérimentale, en essayant différentes stratégies.</label></div>
+            <div class="option"><input type="radio" id="q8e" name="q8" value="e"> <label for="q8e">Passionnée, en suivant votre vision.</label></div>
+            <div class="option"><input type="radio" id="q8f" name="q8" value="f"> <label for="q8f">Orientée vers une vision à long terme et un impact durable.</label></div>
+        </div>
+        <div class="question" id="q9" style="display: none;">
+            <p><strong>9. En matière de gestion du temps, vous :</strong></p>
+            <div class="option"><input type="radio" id="q9a" name="q9" value="a"> <label for="q9a">Travaillez de longues heures pour atteindre vos objectifs.</label></div>
+            <div class="option"><input type="radio" id="q9b" name="q9" value="b"> <label for="q9b">Gérez votre temps de manière flexible pour explorer de nouvelles opportunités.</label></div>
+            <div class="option"><input type="radio" id="q9c" name="q9" value="c"> <label for="q9c">Équilibrez votre temps entre travail et loisirs.</label></div>
+            <div class="option"><input type="radio" id="q9d" name="q9" value="d"> <label for="q9d">Adaptez votre temps en fonction des besoins de l'entreprise.</label></div>
+            <div class="option"><input type="radio" id="q9e" name="q9" value="e"> <label for="q9e">Consacrez tout votre temps à votre projet passion.</label></div>
+            <div class="option"><input type="radio" id="q9f" name="q9" value="f"> <label for="q9f">Planifiez votre temps en fonction de votre vision à long terme.</label></div>
+        </div>
+        <div class="question" id="q10" style="display: none;">
+            <p><strong>10. Votre attitude envers les conseils extérieurs est :</strong></p>
+            <div class="option"><input type="radio" id="q10a" name="q10" value="a"> <label for="q10a">Vous préférez suivre votre propre jugement.</label></div>
+            <div class="option"><input type="radio" id="q10b" name="q10" value="b"> <label for="q10b">Vous êtes ouvert aux conseils mais préférez suivre votre intuition.</label></div>
+            <div class="option"><input type="radio" id="q10c" name="q10" value="c"> <label for="q10c">Vous écoutez les conseils mais prenez des décisions équilibrées.</label></div>
+            <div class="option"><input type="radio" id="q10d" name="q10" value="d"> <label for="q10d">Vous êtes ouvert aux conseils et prêt à expérimenter.</label></div>
+            <div class="option"><input type="radio" id="q10e" name="q10" value="e"> <label for="q10e">Vous écoutez les conseils mais suivez votre passion.</label></div>
+            <div class="option"><input type="radio" id="q10f" name="q10" value="f"> <label for="q10f">Vous écoutez les conseils et les intégrez dans votre vision à long terme.</label></div>
+        </div>
+        <div class="question" id="q11" style="display: none;">
+            <p><strong>11. Votre style de leadership est plutôt :</strong></p>
+            <div class="option"><input type="radio" id="q11a" name="q11" value="a"> <label for="q11a">Directif et axé sur les résultats.</label></div>
+            <div class="option"><input type="radio" id="q11b" name="q11" value="b"> <label for="q11b">Inspirant et innovant.</label></div>
+            <div class="option"><input type="radio" id="q11c" name="q11" value="c"> <label for="q11c">Équilibré et soucieux du bien-être de l'équipe.</label></div>
+            <div class="option"><input type="radio" id="q11d" name="q11" value="d"> <label for="q11d">Adaptable et polyvalent.</label></div>
+            <div class="option"><input type="radio" id="q11e" name="q11" value="e"> <label for="q11e">Passionné et engagé.</label></div>
+            <div class="option"><input type="radio" id="q11f" name="q11" value="f"> <label for="q11f">Visionnaire et orienté vers l'impact social.</label></div>
+        </div>
+        <div class="question" id="q12" style="display: none;">
+            <p><strong>12. Votre plus grand défi en tant qu'entrepreneur est :</strong></p>
+            <div class="option"><input type="radio" id="q12a" name="q12" value="a"> <label for="q12a">Éviter l'épuisement et maintenir l'équilibre.</label></div>
+            <div class="option"><input type="radio" id="q12b" name="q12" value="b"> <label for="q12b">Rester concentré sur un seul projet.</label></div>
+            <div class="option"><input type="radio" id="q12c" name="q12" value="c"> <label for="q12c">Maintenir votre engagement et votre motivation.</label></div>
+            <div class="option"><input type="radio" id="q12d" name="q12" value="d"> <label for="q12d">Prendre des décisions fermes et rester concentré.</label></div>
+            <div class="option"><input type="radio" id="q12e" name="q12" value="e"> <label for="q12e">Rester objectif et écouter les conseils extérieurs.</label></div>
+            <div class="option"><input type="radio" id="q12f" name="q12" value="f"> <label for="q12f">Rester en contact avec la réalité du marché.</label></div>
+        </div>
+        <button id="nextButton" onclick="nextQuestion()">Suite</button>
     </div>
-
-    <div class="question" id="q2" style="display: none;">
-        <p>2. Votre approche du travail est plutôt :</p>
-        <input type="radio" id="q2a" name="q2" value="a">
-        <label for="q2a">Très organisée et axée sur les résultats.</label><br>
-        <input type="radio" id="q2b" name="q2" value="b">
-        <label for="q2b">Dynamique et variée, avec plusieurs projets en cours.</label><br>
-        <input type="radio" id="q2c" name="q2" value="c">
-        <label for="q2c">Équilibrée, en laissant du temps pour les loisirs.</label><br>
-        <input type="radio" id="q2d" name="q2" value="d">
-        <label for="q2d">Adaptable, en fonction des besoins du moment.</label><br>
-        <input type="radio" id="q2e" name="q2" value="e">
-        <label for="q2e">Intensément concentrée sur un seul projet à la fois.</label><br>
-        <input type="radio" id="q2f" name="q2" value="f">
-        <label for="q2f">Orientée vers une vision à long terme.</label><br>
+    <div id="results">
+        <h2>Résultats</h2>
+        <table id="resultTable">
+            <thead>
+                <tr>
+                    <th>Type d'Entrepreneur</th>
+                    <th>Pourcentage</th>
+                </tr>
+            </thead>
+            <tbody id="resultText">
+                <!-- Les résultats seront insérés ici -->
+            </tbody>
+        </table>
+        <button id="restartButton" onclick="restartQuiz()">Relancer</button>
     </div>
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 12;
+        const answers = {};
 
-    <div class="question" id="q3" style="display: none;">
-        <p>3. En situation de stress, vous avez tendance à :</p>
-        <input type="radio" id="q3a" name="q3" value="a">
-        <label for="q3a">Travailler encore plus dur.</label><br>
-        <input type="radio" id="q3b" name="q3" value="b">
-        <label for="q3b">Chercher de nouvelles opportunités ou projets.</label><br>
-        <input type="radio" id="q3c" name="q3" value="c">
-        <label for="q3c">Prendre du recul pour évaluer la situation.</label><br>
-        <input type="radio" id="q3d" name="q3" value="d">
-        <label for="q3d">Trouver des solutions créatives et polyvalentes.</label><br>
-        <input type="radio" id="q3e" name="q3" value="e">
-        <label for="q3e">Vous engager encore plus dans votre travail.</label><br>
-        <input type="radio" id="q3f" name="q3" value="f">
-        <label for="q3f">Réévaluer votre vision et vos objectifs.</label><br>
-    </div>
+        function nextQuestion() {
+            const currentAnswer = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+            if (currentAnswer) {
+                answers[`q${currentQuestion}`] = currentAnswer.value;
+            } else {
+                alert("Veuillez répondre à la question avant de continuer.");
+                return;
+            }
 
-    <div class="question" id="q4" style="display: none;">
-        <p>4. Votre attitude envers la prise de décision est :</p>
-        <input type="radio" id="q4a" name="q4" value="a">
-        <label for="q4a">Rapide et basée sur l'efficacité.</label><br>
-        <input type="radio" id="q4b" name="q4" value="b">
-        <label for="q4b">Flexible et ouverte aux changements.</label><br>
-        <input type="radio" id="q4c" name="q4" value="c">
-        <label for="q4c">Équilibrée, en tenant compte de votre bien-être.</label><br>
-        <input type="radio" id="q4d" name="q4" value="d">
-        <label for="q4d">Expérimentale, en essayant différentes options.</label><br>
-        <input type="radio" id="q4e" name="q4" value="e">
-        <label for="q4e">Passionnée, en suivant votre intuition.</label><br>
-        <input type="radio" id="q4f" name="q4" value="f">
-        <label for="q4f">Réfléchie, en considérant l'impact à long terme.</label><br>
-    </div>
+            document.getElementById(`q${currentQuestion}`).style.display = 'none';
+            currentQuestion++;
 
-    <div class="question" id="q5" style="display: none;">
-        <p>5. Dans votre entreprise, vous accordez le plus d'importance à :</p>
-        <input type="radio" id="q5a" name="q5" value="a">
-        <label for="q5a">La productivité et l'organisation.</label><br>
-        <input type="radio" id="q5b" name="q5" value="b">
-        <label for="q5b">L'innovation et la créativité.</label><br>
-        <input type="radio" id="q5c" name="q5" value="c">
-        <label for="q5c">L'équilibre entre vie professionnelle et personnelle.</label><br>
-        <input type="radio" id="q5d" name="q5" value="d">
-        <label for="q5d">La polyvalence et l'adaptabilité.</label><br>
-        <input type="radio" id="q5e" name="q5" value="e">
-        <label for="q5e">La passion et l'engagement.</label><br>
-        <input type="radio" id="q5f" name="q5" value="f">
-        <label for="q5f">La vision et l'impact social.</label><br>
-    </div>
-
-    <div class="question" id="q6" style="display: none;">
-        <p>6. Votre plus grande force en tant qu'entrepreneur est :</p>
-        <input type="radio" id="q6a" name="q6" value="a">
-        <label for="q6a">Votre capacité à organiser et à exécuter.</label><br>
-        <input type="radio" id="q6b" name="q6" value="b">
-        <label for="q6b">Votre capacité à innover et à prendre des risques.</label><br>
-        <input type="radio" id="q6c" name="q6" value="c">
-        <label for="q6c">Votre capacité à maintenir un équilibre sain.</label><br>
-        <input type="radio" id="q6d" name="q6" value="d">
-        <label for="q6d">Votre capacité à vous adapter et à être polyvalent.</label><br>
-        <input type="radio" id="q6e" name="q6" value="e">
-        <label for="q6e">Votre passion et votre engagement.</label><br>
-        <input type="radio" id="q6f" name="q6" value="f">
-        <label for="q6f">Votre vision et votre leadership.</label><br>
-    </div>
-
-    <div class="question" id="q7" style="display: none;">
-        <p>7. Quand il s'agit de déléguer des tâches, vous :</p>
-        <input type="radio" id="q7a" name="q7" value="a">
-        <label for="q7a">Préférez tout faire vous-même pour assurer l'efficacité.</label><br>
-        <input type="radio" id="q7b" name="q7" value="b">
-        <label for="q7b">Déléguez facilement pour vous concentrer sur de nouvelles idées.</label><br>
-        <input type="radio" id="q7c" name="q7" value="c">
-        <label for="q7c">Déléguez pour maintenir un bon équilibre de vie.</label><br>
-        <input type="radio" id="q7d" name="q7" value="d">
-        <label for="q7d">Déléguez certaines tâches mais aimez rester impliqué.</label><br>
-        <input type="radio" id="q7e" name="q7" value="e">
-        <label for="q7e">Avez du mal à déléguer car vous êtes très engagé.</label><br>
-        <input type="radio" id="q7f" name="q7" value="f">
-        <label for="q7f">Déléguez en fonction de la vision et des objectifs à long terme.</label><br>
-    </div>
-
-    <div class="question" id="q8" style="display: none;">
-        <p>8. Votre approche de la planification stratégique est :</p>
-        <input type="radio" id="q8a" name="q8" value="a">
-        <label for="q8a">Axée sur des objectifs à court terme et des résultats concrets.</label><br>
-        <input type="radio" id="q8b" name="q8" value="b">
-        <label for="q8b">Flexible et adaptable aux changements du marché.</label><br>
-        <input type="radio" id="q8c" name="q8" value="c">
-        <label for="q8c">Équilibrée, en tenant compte de vos besoins personnels.</label><br>
-        <input type="radio" id="q8d" name="q8" value="d">
-        <label for="q8d">Expérimentale, en essayant différentes stratégies.</label><br>
-        <input type="radio" id="q8e" name="q8" value="e">
-        <label for="q8e">Passionnée, en suivant votre vision.</label><br>
-        <input type="radio" id="q8f" name="q8" value="f">
-        <label for="q8f">Orientée vers une vision à long terme et un impact durable.</label><br>
-    </div>
-
-    <div class="question" id="q9" style="display: none;">
-        <p>9. En matière de gestion du temps, vous :</p>
-        <input type="radio" id="q9a" name="q9" value="a">
-        <label for="q9a">Travaillez de longues heures pour atteindre vos objectifs.</label><br>
-        <input type="radio" id="q9b" name="q9" value="b">
-        <label for="q9b">Gérez votre temps de manière flexible pour explorer de nouvelles opportunités.</label><br>
-        <input type="radio" id="q9c" name="q9" value="c">
-        <label for="q9c">Équilibrez votre temps entre travail et loisirs.</label><br>
-        <input type="radio" id="q9d" name="q9" value="d">
-        <label for="q9d">Adaptez votre temps en fonction des besoins de l'entreprise.</label><br>
-        <input type="radio" id="q9e" name="q9" value="e">
-        <label for="q9e">Consacrez tout votre temps à votre projet passion.</label><br>
-        <input type="radio" id="q9f" name="q9" value="f">
-        <label for="q9f">Planifiez votre temps en fonction de votre vision à long terme.</label><br>
-    </div>
-
-    <div class="question" id="q10" style="display: none;">
-        <p>10. Votre attitude envers les conseils extérieurs est :</p>
-        <input type="radio" id="q10a" name="q10" value="a">
-        <label for="q10a">Vous préférez suivre votre propre jugement.</label><br>
-        <input type="radio" id="q10b" name="q10" value="b">
-        <label for="q10b">Vous êtes ouvert aux conseils mais préférez suivre votre intuition.</label><br>
-        <input type="radio" id="q10c" name="q10" value="c">
-        <label for="q10c">Vous écoutez les conseils mais prenez des décisions équilibrées.</label><br>
-        <input type="radio" id="q10d" name="q10" value="d">
-        <label for="q10d">Vous êtes ouvert aux conseils et prêt à expérimenter.</label><br>
-        <input type="radio" id="q10e" name="q10" value="e">
-        <label for="q10e">Vous écoutez les conseils mais suivez votre passion.</label><br>
-        <input type="radio" id="q10f" name="q10" value="f">
-        <label for="q10f">Vous écoutez les conseils et les intégrez dans votre vision à long terme.</label><br>
-    </div>
-
-    <div class="question" id="q11" style="display: none;">
-        <p>11. Votre style de leadership est plutôt :</p>
-        <input type="radio" id="q11a" name="q11" value="a">
-        <label for="q11a">Directif et axé sur les résultats.</label><br>
-        <input type="radio" id="q11b" name="q11" value="b">
-        <label for="q11b">Inspirant et innovant.</label><br>
-        <input type="radio" id="q11c" name="q11" value="c">
-        <label for="q11c">Équilibré et soucieux du bien-être de l'équipe.</label><br>
-        <input type="radio" id="q11d" name="q11" value="d">
-        <label for="q11d">Adaptable et polyvalent.</label><br>
-        <input type="radio" id="q11e" name="q11" value="e">
-        <label for="q11e">Passionné et engagé.</label><br>
-        <input type="radio" id="q11f" name="q11" value="f">
-        <label for="q11f">Visionnaire et orienté vers l'impact social.</label><br>
-    </div>
-
-    <div class="question" id="q12" style="display: none;">
-        <p>12. Votre plus grand défi en tant qu'entrepreneur est :</p>
-        <input type="radio" id="q12a" name="q12" value="a">
-        <label for="q12a">Éviter l'épuisement et maintenir l'équilibre.</label><br>
-        <input type="radio" id="q12b" name="q12" value="b">
-        <label for="q12b">Rester concentré sur un seul projet.</label><br>
-        <input type="radio" id="q12c" name="q12" value="c">
-        <label for="q12c">Maintenir votre engagement et votre motivation.</label><br>
-        <input type="radio" id="q12d" name="q12" value="d">
-        <label for="q12d">Prendre des décisions fermes et rester concentré.</label><br>
-        <input type="radio" id="q12e" name="q12" value="e">
-        <label for="q12e">Rester objectif et écouter les conseils extérieurs.</label><br>
-        <input type="radio" id="q12f" name="q12" value="f">
-        <label for="q12f">Rester en contact avec la réalité du marché.</label><br>
-    </div>
-
-    <button onclick="nextQuestion()">Suite</button>
-</div>
-
-<div id="results">
-    <h2>Résultats</h2>
-    <p id="resultText"></p>
-</div>
-
-<script>
-    let currentQuestion = 1;
-    const totalQuestions = 12;
-    const answers = {};
-
-    function nextQuestion() {
-        // Save the current answer
-        const currentAnswer = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
-        if (currentAnswer) {
-            answers[`q${currentQuestion}`] = currentAnswer.value;
-        } else {
-            alert("Veuillez répondre à la question avant de continuer.");
-            return;
+            if (currentQuestion <= totalQuestions) {
+                document.getElementById(`q${currentQuestion}`).style.display = 'block';
+            } else {
+                document.getElementById('nextButton').style.display = 'none';
+                calculateResults();
+                document.getElementById('results').style.display = 'block';
+            }
         }
 
-        // Hide the current question
-        document.getElementById(`q${currentQuestion}`).style.display = 'none';
+        function calculateResults() {
+            const counts = { a: 0, b: 0, c: 0, d: 0, e: 0, f: 0 };
+            for (const key in answers) {
+                counts[answers[key]]++;
+            }
 
-        // Move to the next question
-        currentQuestion++;
+            const totalAnswers = totalQuestions;
+            const percentages = {
+                a: (counts.a / totalAnswers) * 100,
+                b: (counts.b / totalAnswers) * 100,
+                c: (counts.c / totalAnswers) * 100,
+                d: (counts.d / totalAnswers) * 100,
+                e: (counts.e / totalAnswers) * 100,
+                f: (counts.f / totalAnswers) * 100
+            };
 
-        if (currentQuestion <= totalQuestions) {
-            // Show the next question
-            document.getElementById(`q${currentQuestion}`).style.display = 'block';
-        } else {
-            // Calculate and display results
-            calculateResults();
+            const resultText = document.getElementById('resultText');
+            const entrepreneurTypes = {
+                a: "Le bûcheron",
+                b: "Le papillon",
+                c: "Le libertin",
+                d: "Le bricoleur",
+                e: "Le converti",
+                f: "Le missionnaire"
+            };
+
+            let resultHTML = '';
+            for (const key in percentages) {
+                resultHTML += `
+                    <tr>
+                        <td>${entrepreneurTypes[key]}</td>
+                        <td class="percentage-cell">
+                            <div class="percentage-bar" style="width: ${percentages[key]}%"></div>
+                            <span class="percentage-text">${percentages[key].toFixed(2)}%</span>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            resultText.innerHTML = resultHTML;
         }
-    }
 
-    function calculateResults() {
-        // Count the number of each answer
-        const counts = { a: 0, b: 0, c: 0, d: 0, e: 0, f: 0 };
-        for (const key in answers) {
-            counts[answers[key]]++;
+        function restartQuiz() {
+            currentQuestion = 1;
+            for (let i = 1; i <= totalQuestions; i++) {
+                document.getElementById(`q${i}`).style.display = 'none';
+            }
+            document.getElementById('q1').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('nextButton').style.display = 'block';
+            for (const key in answers) {
+                delete answers[key];
+            }
         }
-
-        // Calculate the percentage for each type
-        const totalAnswers = totalQuestions;
-        const percentages = {
-            a: (counts.a / totalAnswers) * 100,
-            b: (counts.b / totalAnswers) * 100,
-            c: (counts.c / totalAnswers) * 100,
-            d: (counts.d / totalAnswers) * 100,
-            e: (counts.e / totalAnswers) * 100,
-            f: (counts.f / totalAnswers) * 100
-        };
-
-        // Display the results
-        const resultText = document.getElementById('resultText');
-        resultText.innerHTML = `
-            <p>Le bûcheron : ${percentages.a.toFixed(2)}%</p>
-            <p>Le papillon : ${percentages.b.toFixed(2)}%</p>
-            <p>Le libertin : ${percentages.c.toFixed(2)}%</p>
-            <p>Le bricoleur : ${percentages.d.toFixed(2)}%</p>
-            <p>Le converti : ${percentages.e.toFixed(2)}%</p>
-            <p>Le missionnaire : ${percentages.f.toFixed(2)}%</p>
-        `;
-
-        // Show the results div
-        document.getElementById('results').style.display = 'block';
-    }
-</script>
-
+    </script>
 </body>
 </html>
+
