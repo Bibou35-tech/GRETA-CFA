@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test : Quel est votre profil d'entrepreneur ?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .option {
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            width: 100px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #results {
+            margin-top: 20px;
+            display: none;
+        }
+        #resultText {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .result-header {
+            color: #67D185;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test : Quel est votre profil d'entrepreneur ?</h1>
+    <div id="questionnaire">
+        <!-- Questions here (same as before) -->
+        <div class="question" id="q1">
+            <p>1. Quand vous avez une idée de projet, vous préférez :</p>
+            <div class="option"><input type="radio" id="q1a" name="q1" value="a"> <label for="q1a">Commencer immédiatement à travailler sur le projet.</label></div>
+            <div class="option"><input type="radio" id="q1b" name="q1" value="b"> <label for="q1b">Explorer plusieurs idées en même temps.</label></div>
+            <div class="option"><input type="radio" id="q1c" name="q1" value="c"> <label for="q1c">Évaluer comment ce projet s'intègre dans votre style de vie.</label></div>
+            <div class="option"><input type="radio" id="q1d" name="q1" value="d"> <label for="q1d">Expérimenter différentes approches avant de vous engager.</label></div>
+            <div class="option"><input type="radio" id="q1e" name="q1" value="e"> <label for="q1e">Vous plonger complètement dans cette idée.</label></div>
+            <div class="option"><input type="radio" id="q1f" name="q1" value="f"> <label for="q1f">Considérer l'impact social ou communautaire du projet.</label></div>
+        </div>
+        <!-- Include all other questions similarly -->
+        <button onclick="nextQuestion()">Suite</button>
+    </div>
+    <div id="results">
+        <h2>Résultats</h2>
+        <div id="resultText"></div>
+    </div>
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 12;
+        const answers = {};
+
+        function nextQuestion() {
+            const currentAnswer = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+            if (currentAnswer) {
+                answers[`q${currentQuestion}`] = currentAnswer.value;
+            } else {
+                alert("Veuillez répondre à la question avant de continuer.");
+                return;
+            }
+
+            document.getElementById(`q${currentQuestion}`).style.display = 'none';
+            currentQuestion++;
+
+            if (currentQuestion <= totalQuestions) {
+                document.getElementById(`q${currentQuestion}`).style.display = 'block';
+            } else {
+                calculateResults();
+            }
+        }
+
+        function calculateResults() {
+            const counts = { a: 0, b: 0, c: 0, d: 0, e: 0, f: 0 };
+            for (const key in answers) {
+                counts[answers[key]]++;
+            }
+
+            const totalAnswers = totalQuestions;
+            const percentages = {
+                a: (counts.a / totalAnswers) * 100,
+                b: (counts.b / totalAnswers) * 100,
+                c: (counts.c / totalAnswers) * 100,
+                d: (counts.d / totalAnswers) * 100,
+                e: (counts.e / totalAnswers) * 100,
+                f: (counts.f / totalAnswers) * 100
+            };
+
+            const resultText = document.getElementById('resultText');
+            resultText.innerHTML = `
+                <p><span class="result-header">Le bûcheron :</span> ${percentages.a.toFixed(2)}%</p>
+                <p><span class="result-header">Le papillon :</span> ${percentages.b.toFixed(2)}%</p>
+                <p><span class="result-header">Le libertin :</span> ${percentages.c.toFixed(2)}%</p>
+                <p><span class="result-header">Le bricoleur :</span> ${percentages.d.toFixed(2)}%</p>
+                <p><span class="result-header">Le converti :</span> ${percentages.e.toFixed(2)}%</p>
+                <p><span class="result-header">Le missionnaire :</span> ${percentages.f.toFixed(2)}%</p>
+            `;
+
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
